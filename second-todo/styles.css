@@ -5,11 +5,16 @@
 }
 
 body {
+  padding: 2rem;
   background-color: #7F27FF;
-  display: flex;
+  display: flex; 
   justify-content: center;
   align-items: center;
 }
+
+/* #container {
+  
+} */
 
 #header {
   color: whitesmoke;

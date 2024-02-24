@@ -32,11 +32,18 @@ function acceptData() {
   createTodos();
 }
 
+function getDate() {
+  const date = new Date();
+  const timestamps = date.toLocaleString();
+  return timestamps;
+}
+
 function createTodos() {
   todos.innerHTML = "";
-  data.map((todo, index) => {
-    return (todos.innerHTML += `
+  data.forEach((todo, index) => {
+    todos.innerHTML += `
         <div id=${index}>
+            <div>${getDate()}</div>
             <h2>${todo.text}</h2>
             <p>${todo.body}</p>
             <span class="options">
@@ -48,7 +55,7 @@ function createTodos() {
                 </span>
             </span>
         </div>
-    `);
+    `;
   });
 
   resetForm();
@@ -56,9 +63,10 @@ function createTodos() {
 
 function editTodo(e) {
   let selectedTodo = e.parentElement.parentElement;
+  // console.log("select => ", selectedTodo);
 
-  heading.value = selectedTodo.children[0].innerHTML;
-  description.value = selectedTodo.children[1].innerHTML;
+  heading.value = selectedTodo.children[1].innerHTML;
+  description.value = selectedTodo.children[2].innerHTML;
 
   deleteTodo(e);
 }
